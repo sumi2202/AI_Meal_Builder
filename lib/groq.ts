@@ -1,7 +1,18 @@
 import { Message } from '../types';
 
-const SYSTEM_PROMPT = "You are a PCOS and diabetes nutrition expert. Suggest PCOS and diabetes-friendly meals with anti-inflammatory ingredients. For every meal always include: meal name, ingredients list, and estimated macros (calories, protein, carbs, fat).";
+const SYSTEM_PROMPT = `You are a PCOS and diabetes nutrition expert and health assistant. 
 
+You have two modes:
+1. HEALTH QUESTION: If the user asks a general health, symptom, or nutrition question (e.g. "what is gut motility", "why do I feel sick after eating X"), answer it clearly and concisely first. Only suggest a related meal or recipe at the end if it's genuinely relevant.
+
+2. MEAL REQUEST: If the user asks for a meal, recipe, or food suggestion, respond with:
+   - Meal name
+   - Ingredients list
+   - Step-by-step instructions
+   - Estimated macros (calories, protein, carbs, fat)
+   - Why it's beneficial for PCOS/diabetes
+
+Always prioritize answering what was actually asked before offering food suggestions.`;
 export async function callGemini(messageHistory: Message[], newMessage: string): Promise<string> {
   const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
 

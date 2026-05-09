@@ -74,7 +74,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages, onSend, isLoading }) 
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-purple-200 p-4 bg-white rounded-b-lg">
+      <div className="border-t border-purple-200 p-4 bg-white rounded-b-lg text-purple-400">
         <div className="flex space-x-2">
           <input
             type="text"
