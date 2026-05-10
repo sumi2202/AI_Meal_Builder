@@ -13,6 +13,7 @@ export interface Macro {
 export interface Meal {
   name: string;
   ingredients: string[];
+  instructions: string[];
   macros: Macro;
 }
 

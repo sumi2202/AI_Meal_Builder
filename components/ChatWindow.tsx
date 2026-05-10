@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Message } from '../types';
 
 interface ChatWindowProps {
@@ -49,7 +50,13 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages, onSend, isLoading }) 
                   : 'bg-white text-gray-800 border border-purple-200'
               }`}
             >
-              <p className="whitespace-pre-wrap">{message.content}</p>
+              {message.role === 'assistant' ? (
+                <div className="whitespace-pre-wrap text-gray-800">
+                  <ReactMarkdown>{message.content}</ReactMarkdown>
+                </div>
+              ) : (
+                <p className="whitespace-pre-wrap">{message.content}</p>
+              )}
             </div>
           </div>
         ))}

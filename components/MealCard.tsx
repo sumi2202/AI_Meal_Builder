@@ -22,6 +22,15 @@ const MealCard: React.FC<MealCardProps> = ({ meal, onSaveMeal }) => {
       </div>
 
       <div className="mb-6">
+        <h4 className="text-lg font-semibold text-gray-700 mb-2">Instructions:</h4>
+        <ol className="list-decimal list-inside space-y-1 text-gray-600">
+          {(meal.instructions ?? []).map((instruction, index) => (
+            <li key={index}>{instruction}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="mb-6">
         <MacroTracker macro={meal.macros} />
       </div>
 
