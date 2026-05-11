@@ -27,7 +27,8 @@ Only cite sources when answering a genuine health, nutrition, or medical questio
 
 Format citations as: "Sources: [Name] ([domain])"
 Never generate specific page URLs, only the website name and domain.`;
-export async function callGemini(messageHistory: Message[], newMessage: string): Promise<string> {
+
+export async function callGroq(messageHistory: Message[], newMessage: string): Promise<string> {
   const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
 
   if (!apiKey) {

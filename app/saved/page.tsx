@@ -38,17 +38,17 @@ export default function SavedPage() {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-green-50 to-purple-50 p-4">
+    <div className="min-h-screen bg-linear-to-br from-jungle-teal-50 to-ivory-mist-50 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-green-900 mb-2">Saved Meal Plans</h1>
-          <p className="text-lg text-green-700">Your personalized PCOS-friendly meals</p>
+          <h1 className="text-4xl font-bold text-jungle-teal-900 mb-2">Saved Meal Plans</h1>
+          <p className="text-lg text-jungle-teal-700">Your personalized PCOS-friendly meals</p>
         </div>
 
         {savedPlans.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-12 text-center border-2 border-dashed border-purple-300">
+          <div className="bg-ivory-mist-50 rounded-lg shadow-md p-12 text-center border-2 border-dashed border-vintage-grape-300">
             <svg
-              className="w-16 h-16 mx-auto text-purple-400 mb-4"
+              className="w-16 h-16 mx-auto text-vintage-grape-400 mb-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -60,13 +60,13 @@ export default function SavedPage() {
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">No saved plans yet</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-2xl font-semibold text-vintage-grape-900 mb-2">No saved plans yet</h3>
+            <p className="text-vintage-grape-900 mb-4">
               Chat with your AI nutrition expert to create personalized meal plans
             </p>
             <a
               href="/chat"
-              className="inline-block px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200"
+              className="inline-block px-6 py-2 bg-vintage-grape-600 text-ivory-mist-50 rounded-lg hover:bg-vintage-grape-700 transition-colors duration-200"
             >
               Start Planning
             </a>
@@ -76,13 +76,13 @@ export default function SavedPage() {
             {savedPlans.map((plan) => (
               <div
                 key={plan.id}
-                className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-green-500"
+                className="bg-ivory-mist-50 rounded-lg shadow-lg p-6 border-l-4 border-jungle-teal-500"
               >
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800">{plan.mealName}</h2>
-                    <p className="text-sm text-gray-600 mt-1">
-                      📅 {new Date(plan.date).toLocaleDateString('en-US', {
+                    <h2 className="text-2xl font-bold text-vintage-grape-900">{plan.mealName}</h2>
+                    <p className="text-sm text-vintage-grape-900 mt-1">
+                      {new Date(plan.date).toLocaleDateString(undefined, {
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
@@ -92,7 +92,7 @@ export default function SavedPage() {
                   </div>
                   <button
                     onClick={() => handleDeletePlan(plan.id)}
-                    className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors duration-200"
+                    className="px-4 py-2 bg-pink-mist-700 text-ivory-mist-50 rounded-md hover:bg-pink-mist-800 focus:outline-none focus:ring-2 focus:ring-pink-mist-500 focus:ring-opacity-50 transition-colors duration-200"
                   >
                     Delete
                   </button>
@@ -110,8 +110,8 @@ export default function SavedPage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-purple-50 rounded-lg p-4 text-center">
-                    <p className="text-gray-600">No meals added to this plan yet</p>
+                  <div className="bg-ivory-mist-50 rounded-lg p-4 text-center">
+                    <p className="text-vintage-grape-900">No meals added to this plan yet</p>
                   </div>
                 )}
               </div>

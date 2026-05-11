@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import ChatWindow from '@/components/ChatWindow';
-import { callGemini, extractRecipeFromChat } from '@/lib/groq';
+import { callGroq, extractRecipeFromChat } from '@/lib/groq';
 import { Message, Meal, SavedPlan } from '@/types';
 
 export default function ChatPage() {
@@ -20,8 +20,8 @@ export default function ChatPage() {
     setIsLoading(true);
 
     try {
-      // Call Gemini API
-      const assistantReply = await callGemini(messages, userMessage);
+      // Call Groq API
+      const assistantReply = await callGroq(messages, userMessage);
 
       // Add assistant response to chat
       const assistantMessage: Message = {
@@ -31,7 +31,7 @@ export default function ChatPage() {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
+      console.error('Error calling Groq API:', error);
       const errorMessage: Message = {
         role: 'assistant',
         content: 'Sorry, I encountered an error. Please try again.',
@@ -71,7 +71,7 @@ export default function ChatPage() {
 
       const planName = recipes[0]?.mealName || 'Meal Plan';
       const id = `plan_${Date.now()}`;
-      const date = new Date().toISOString().split('T')[0];
+      const date = new Date().toISOString(); 
 
       const savedPlan: SavedPlan = {
         id,
@@ -93,20 +93,20 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-50 to-green-50 p-4">
+    <div className="min-h-screen bg-linear-to-br from-ivory-mist-50 to-jungle-teal-50 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-4xl font-bold text-purple-900 mb-2">PCOS Meal Planner</h1>
-          <p className="text-lg text-purple-700">Chat with your AI nutrition expert</p>
+          <h1 className="text-4xl font-bold text-vintage-grape-900 mb-2">Chef C</h1>
+          <p className="text-lg text-vintage-grape-700">Chat with your AI nutrition expert</p>
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 mb-4">
+        <div className="bg-pink-mist-50 border border-pink-mist-200 text-pink-mist-900 rounded-xl p-4 mb-4">
           <p className="text-sm leading-6">
             ⚠️ This AI is for informational purposes only and is not a substitute for professional medical or dietary advice. Always consult your doctor or registered dietitian before making changes to your diet.
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-4 mb-6 h-96">
+        <div className="bg-ivory-mist-50 rounded-lg shadow-lg p-4 mb-6 h-96">
           <ChatWindow
             messages={messages}
             onSend={handleSendMessage}
@@ -118,7 +118,7 @@ export default function ChatPage() {
           <button
             onClick={handleSavePlan}
             disabled={messages.length === 0 || isLoading}
-            className="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+            className="px-8 py-3 bg-jungle-teal-600 text-ivory-mist-50 font-semibold rounded-lg hover:bg-jungle-teal-700 focus:outline-none focus:ring-2 focus:ring-jungle-teal-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
             Save Meal Plan
           </button>
